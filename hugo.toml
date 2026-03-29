@@ -1,0 +1,91 @@
+title = "Maysara Blog"
+baseURL = 'https://www.maysara.blog/'
+
+# This is what goes in <html lang="">
+languageCode = 'en-us'
+
+# This defines how dates are formatted
+defaultContentLanguage = "en-us"
+
+# Enable emojis globally
+enableEmoji = true
+
+# Theme configuration
+theme = "hugo-blog-awesome"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+############################## English language ################################
+[Languages.en-us]
+  languageName = "English"
+  languageCode = "en-us"
+  contentDir = "content/en"
+  weight = 1
+
+  [Languages.en-us.menu]
+  [[Languages.en-us.menu.main]]
+    pageRef="/"
+    name = 'Home'
+    url = '/'
+    weight = 10
+  [[Languages.en-us.menu.main]]
+    pageRef="posts"
+    name = 'Posts'
+    url = '/posts/'
+    weight = 20
+  [[Languages.en-us.menu.main]]
+    pageRef="about"
+    name = 'About'
+    url = '/about/'
+    weight = 30
+
+[Languages.en-us.params]
+  sitename = "Maysara Blog"
+  defaultColor = "auto"
+  description = "A blog by Maysara"
+  mainSections = ['posts']
+  toc = true
+  tocOpen = false
+  goToTop = true
+  dateFormat = "2 Jan 2006"
+  rssFeedDescription = "summary"
+
+[Languages.en-us.params.author]
+  avatar = "https://github.com/maysara-elshewehy.png"
+  name = "Maysara"
+  email = "maysara.elshewehy@gmail.com"
+  intro = "Welcome to My Blog"
+  description = "Software developer, tech enthusiast, and open-source contributor. Sharing thoughts on web development, technology, and coding."
+
+[[Languages.en-us.params.social]]
+  name = "GitHub"
+  icon = "github"
+  url = "https://github.com/maysara-elshewehy"
+
+[[Languages.en-us.params.social]]
+  name = "X"
+  icon = "twitter"
+  url = "https://x.com/maysara_dev"
+
+[[Languages.en-us.params.social]]
+  name = "Email"
+  icon = "mail"
+  url = "mailto:maysara.elshewehy@gmail.com"
+
+[[Languages.en-us.params.social]]
+  name = "Mine Language"
+  icon = "mine"
+  url = "https://minelang.org"
+
+# Global author configuration
+[author]
+  name = "Maysara"
+  email = "maysara.elshewehy@gmail.com"

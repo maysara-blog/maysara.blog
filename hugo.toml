@@ -42,9 +42,9 @@ theme = "hugo-blog-awesome"
     url = '/posts/'
     weight = 20
   [[Languages.en-us.menu.main]]
-    pageRef="about"
-    name = 'About'
-    url = '/about/'
+    pageRef="history"
+    name = 'History'
+    url = '/history/'
     weight = 30
 
 [Languages.en-us.params]

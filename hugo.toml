@@ -46,10 +46,15 @@ theme = "hugo-blog-awesome"
     name = 'History'
     url = '/history/'
     weight = 30
+  [[Languages.en-us.menu.main]]
+    pageRef="sponsor"
+    name = 'Sponsor'
+    url = '/sponsor/'
+    weight = 40
 
 [Languages.en-us.params]
   sitename = "Maysara Blog"
-  defaultColor = "auto"
+  defaultColor = "dark"
   description = "A blog by Maysara"
   mainSections = ['posts']
   toc = true

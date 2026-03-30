@@ -11,7 +11,7 @@ defaultContentLanguage = "en-us"
 enableEmoji = true
 
 # Theme configuration
-theme = "hugo-blog-awesome"
+theme = "myblog-theme"
 
 [markup]
   [markup.highlight]

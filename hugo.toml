@@ -67,7 +67,7 @@ theme = "myblog-theme"
   avatar = "https://github.com/maysara-elshewehy.png"
   name = "Maysara"
   email = "maysara.elshewehy@gmail.com"
-  intro = "Welcome to My Blog"
+  intro = "Maysara"
   description = "Software developer, tech enthusiast, and open-source contributor. Sharing thoughts on web development, technology, and coding."
 
 [[Languages.en-us.params.social]]

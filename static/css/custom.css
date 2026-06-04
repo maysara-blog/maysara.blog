@@ -4,3 +4,7 @@
 #mode {
     display: none !important;
 }
+
+html:not([data-dark-mode]) svg:has(image) {
+    filter: none !important;
+}

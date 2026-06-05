@@ -104,4 +104,4 @@ That's the kind of explicitness I want everywhere in Mine :)
 
 → [Visibility in Mine](./visibility-in-mine)
 
-→ [How Types Work in Mine](./how-types-work-in-mine)
+→ [Types in Mine](./types-in-mine)

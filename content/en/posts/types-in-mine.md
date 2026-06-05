@@ -1,8 +1,8 @@
 ---
-title: "How Types Work in Mine"
+title: "Types in Mine"
 date: 2026-05-23
 draft: false
-description: "How Types Work in Mine Language"
+description: "Types in Mine Language"
 ---
 
 Mine's type system has one goal: **never lie to you.**
@@ -33,8 +33,8 @@ let y = 3.14 as f32 // f32
 Characters follow the same rule:
 
 ```mine
-let c = 'A'  // u8 (ASCII)
-let h = '❤️' // u21 (Unicode codepoint)
+let c = 'A' as u8   // u8 (ASCII)
+let h = '❤️' as u21 // u21 (Unicode codepoint)
 ```
 
 No default integer size forced on you. No silent truncation. The compiler holds the value until you decide what it should be.
@@ -118,7 +118,7 @@ let p: Point = { x: 1.0, y: 2.0 }         // OK
 let p: Point = { x: 1.0, y: 2.0, z: 3.0 } // CompilerError (extra field)
 ```
 
-Only anonymous objects satisfy a `def`. Classes have their own identity (a `Vec2` is never a `Point` even if it has the same fields).
+Only anonymous objects satisfy a `def`. Classes have their own identity (a `Vec2` is never a `Point` even if it has the same fields). _**TODO:** Think about this again ([Generics](./generics-in-mine#generic-functions))_
 
 ---
 
@@ -268,12 +268,6 @@ Explicit types feel like work at first. Then you stop hitting weird bugs at 2am 
 
 ---
 
-→ [Mutability in Mine](./mutability-in-mine)
+→ [Classes in Mine](./classes-in-mine)
 
-→ [Visibility in Mine](./visibility-in-mine)
-
-→ [Evaluation Phases in Mine](./evaluation-phases-in-mine)
-
-→ [Error Handling in Mine](./error-handling-in-mine)
-
-→ [Control Flow in Mine](./control-flow-in-mine)
+→ [Generics in Mine](./generics-in-mine)

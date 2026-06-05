@@ -87,4 +87,4 @@ Private by default means your public API is always *intentional*. Every `pub` is
 
 → [Evaluation Phases in Mine](./evaluation-phases-in-mine)
 
-→ [How Types Work in Mine](./how-types-work-in-mine)
+→ [Types in Mine](./types-in-mine)

@@ -26,7 +26,7 @@ No special `error` keyword, no global error registry like Zig's `anyerror`.
 
 ## Functions that can fail
 
-Add `ErrorSet!ReturnType` to the signature. You can use a named set or define the errors inline:
+Add `ErrorSet!ReturnType` to the signature. Use a named set or define errors inline:
 
 ```mine
 // named error set
@@ -42,7 +42,7 @@ fn divide(a: f32, b: f32) [DivisionByZero, Overflow]!f32 {
 }
 ```
 
-`fail` returns an error variant (cleaner than Zig's `return error.DivisionByZero`). You're saying what you mean: this function *failed*, here's why.
+`fail` returns an error variant without the dot (you're saying what you mean: this function *failed*, here's why).
 
 A function that can fail but returns nothing:
 
@@ -72,19 +72,17 @@ fn process() MathErrors!f32 {
 let result = divide(10.0, 0.0) catch e { 0.0 }
 ```
 
-**`match`** (handle each variant explicitly):
+**`match`** (handle each variant explicitly, variants use dot syntax in match):
 
 ```mine
 match divide(a, b) {
-    ok(v)           => { v * 2.0 }
-    .DivisionByZero => { 0.0 }
-    .Overflow       => { maxof f32 }
+    ok(v)            => { v * 2.0 }
+    .DivisionByZero  => { 0.0 }
+    .Overflow        => { maxof f32 }
 }
 ```
 
-`ok(v)` captures the success value. Error variants use the same `.Variant` syntax as enums (flat, no nesting, no `Ok`/`Err` wrapper types like Rust).
-
-`match` is exhaustive (if you don't cover all variants the compiler tells you). Use `else` as a fallback:
+`ok(v)` captures the success value. `match` is exhaustive (use `else` as a fallback):
 
 ```mine
 match divide(a, b) {
@@ -97,7 +95,7 @@ match divide(a, b) {
 
 ## Combining error sets
 
-Named sets can be merged inline in a signature or into a new named set:
+Named sets can be merged into a new set or inline in a signature:
 
 ```mine
 err MathErrors = [DivisionByZero, Overflow]
@@ -106,7 +104,7 @@ err FileErrors = [NotFound, PermissionDenied]
 // merge into a new named set
 err AppErrors = [MathErrors, FileErrors, Unknown]
 
-// or merge inline in a signature
+// merge inline in a signature
 fn process() [MathErrors, FileErrors, Unknown]!void {..}
 
 // or use the named merged set
@@ -119,7 +117,7 @@ fn process() AppErrors!void {..}
 
 Zig's error handling is good (explicit, no exceptions, compiler-enforced). But it has rough edges: `anyerror` is a global catch-all that weakens the guarantees, `return error.X` is verbose, and `catch |e| switch (e)` is awkward to read.
 
-Mine keeps what's good (explicit errors, `try` propagation, exhaustive handling) and cleans up the rest:
+Mine keeps what's good and cleans up the rest:
 
 |                 | Zig                        | Mine                                        |
 | --------------- | -------------------------- | ------------------------------------------- |
@@ -128,12 +126,10 @@ Mine keeps what's good (explicit errors, `try` propagation, exhaustive handling)
 | Return error    | `return error.A`           | `fail A`                                    |
 | Propagate       | `try x`                    | `try x`                                     |
 | Handle          | `catch \|e\| {}`           | `catch e {}` or `match`                     |
-| Inline handling | `if (x) \|v\| else \|e\|`  | `match x { ok(v) => {}, .Error => {}, .. }` |
+| Match success   | not supported              | `ok(v)`                                     |
 | Merge sets      | `const M = Set1 \|\| Set2` | `err M = [Set1, Set2]`                      |
 | Inline merge    | ✗ not supported            | `[Set1, Set2, Error]!T`                     |
 | Catch-all       | `anyerror`                 | ✗ not allowed                               |
-
-
 
 No surprises, no invisible control flow, no 2am stack traces :)
 

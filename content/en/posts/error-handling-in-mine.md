@@ -113,7 +113,7 @@ fn process() AppErrors!void {..}
 
 ---
 
-## Why I designed it this way
+## Why I designed it this way?
 
 Zig's error handling is good (explicit, no exceptions, compiler-enforced). But it has rough edges: `anyerror` is a global catch-all that weakens the guarantees, `return error.X` is verbose, and `catch |e| switch (e)` is awkward to read.
 

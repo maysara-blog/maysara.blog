@@ -260,7 +260,7 @@ let p = { x: 1.0, y: 2.0 }
 
 ---
 
-## Why it works this way
+## Why it works this way?
 
 Every type in Mine means exactly what it says. When something doesn't have a concrete type yet (like a `comptime_int` the compiler tells you that too, instead of silently picking one for you).
 

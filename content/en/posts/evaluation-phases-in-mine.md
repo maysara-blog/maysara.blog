@@ -90,7 +90,7 @@ class Config {
 
 Comptime fields must be immutable (a mutable compile-time field doesn't really make sense). Compile-time means "decided once, forever."
 
-## Why I care about this
+## Why I care about this?
 
 Performance-critical code often has two kinds of values: things you know at compile time, and things you only know at runtime. Most languages blur the line (you `const` things and hope the optimizer figures it out).
 

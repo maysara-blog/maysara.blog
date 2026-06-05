@@ -5,9 +5,7 @@ draft: false
 description: "Generics in Mine Language"
 ---
 
-I'll be honest: I could have made Mine's generic system more powerful. Trait bounds, higher-kinded types, associated types... I know what those are, and I chose not to add them.
-
-Here's what I built instead, and why.
+Mine's generic system is straightforward: parameterize types and functions with `<T>`, constrain them with shape contracts, and let the compiler monomorphize everything at compile time. No trait systems, no higher-kinded types, no implicit magic. Just explicit, predictable generics that work.
 
 ---
 
@@ -90,8 +88,8 @@ fn identity<T>(x: T) T {
     return x
 }
 
-let a = identity(42 as i32)   // T = i32
-let b = identity(true)        // T = bool
+let a = identity(42 as i32) // T = i32
+let b = identity(true)      // T = bool
 ```
 
 Multiple type parameters:
@@ -101,8 +99,8 @@ fn swap<A, B>(a: A, b: B) .{B, A} {
     return .{b, a}
 }
 
-let t = swap(42 as i32, true)              // returns .{bool, i32}
-let t: .{bool, i32} = swap(42, true)       // explicit
+let t = swap(42 as i32, true)        // returns .{bool, i32}
+let t: .{bool, i32} = swap(42, true) // explicit
 ```
 
 Generic functions with constraints:
@@ -128,13 +126,13 @@ Generic functions get the same treatment (each concrete type parameter generates
 
 ---
 
-## Why I kept it simple
+## Why this design?
 
-I've seen generic systems so expressive they become their own language. You spend more time satisfying the type checker than writing actual programs.
+Generics should be a tool for code reuse, not a puzzle to solve. Trait bounds, type families, and implicit constraint resolution sound powerful until you're staring at a compiler error that says "cannot infer T" and wondering which of seven possible constraints it's upset about.
 
-Mine's generics cover what you need day to day: parameterizing containers and functions, constraining types to have certain fields, composing constraints. That's 95% of real use cases. The remaining 5% can usually be solved with a different design.
+Mine's approach: you explicitly say what you need (`T: SomeDef`), the compiler checks it, and that's it. No hidden constraints, no special case rules, no type inference rabbit holes. When you use a generic function or class, it's immediately clear what constraints apply.
 
-Simple isn't the same as weak. It means the tool does what you need without getting in the way :)
+The result is that generics stay useful and predictable. You parameterize what needs parameterizing, constrain what needs constraining, and move on.
 
 ---
 

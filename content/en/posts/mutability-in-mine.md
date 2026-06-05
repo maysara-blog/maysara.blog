@@ -94,7 +94,7 @@ class Counter {
 
 ---
 
-## Why I think this matters
+## Why I think this matters?
 
 Most languages make mutability the default and ask you to opt into immutability (`const`, `final`, `readonly`...). Mine flips that.
 

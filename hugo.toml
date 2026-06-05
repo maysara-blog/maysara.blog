@@ -15,7 +15,7 @@ theme = "myblog-theme"
 
 [markup]
   [markup.highlight]
-    noClasses = false
+    codeFences = false
   [markup.goldmark.renderer]
     unsafe = true
   [markup.tableOfContents]
@@ -68,7 +68,7 @@ theme = "myblog-theme"
   name = "Maysara"
   email = "maysara.elshewehy@gmail.com"
   intro = "Maysara"
-  description = "Software developer, tech enthusiast, and open-source contributor. Sharing thoughts on web development, technology, and coding."
+  description = "Developer with a philosopher's mind and an artist's eye, just enough ADHD to start everything, and enough OCPD to finish it perfectly."
 
 [[Languages.en-us.params.social]]
   name = "GitHub"

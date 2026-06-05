@@ -39,8 +39,8 @@ class User {
 }
 
 let u = User("maysara", "hunter2")
-u.username  // OK
-u.password  // CompilerError (private)
+u.username // OK
+u.password // CompilerError (private)
 ```
 
 Without `pub` or `prv`, the parameter is just a local value (not promoted to a field at all).
@@ -57,8 +57,8 @@ class Config {
     pub static fn default() Config {..}
 }
 
-Config.VERSION      // OK (no instance needed)
-Config.default()    // OK (no instance needed)
+Config.VERSION   // OK (no instance needed)
+Config.default() // OK (no instance needed)
 ```
 
 One rule I'm firm about: **static fields must be immutable**. A mutable static field is shared global state, and that's exactly the kind of hidden mutation I designed Mine to avoid:

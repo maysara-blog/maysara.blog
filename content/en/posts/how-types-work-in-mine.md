@@ -16,8 +16,8 @@ No hidden sizes, no silent coercions, no "well it's *technically* a string." Her
 This is the part I'm most proud of. Plain number literals in Mine have no concrete type (they're `comptime_int` or `comptime_float`, free-precision compile-time values):
 
 ```mine
-let x = 42      // comptime_int (no size, no limit)
-let y = 3.14    // comptime_float (full f128 precision)
+let x = 42   // comptime_int (no size, no limit)
+let y = 3.14 // comptime_float (full f128 precision)
 ```
 
 You pin them when you're ready:
@@ -33,7 +33,7 @@ let y = 3.14 as f32 // f32
 Characters follow the same rule:
 
 ```mine
-let c = 'A'   // u8 (ASCII)
+let c = 'A'  // u8 (ASCII)
 let h = '❤️' // u21 (Unicode codepoint)
 ```
 
@@ -106,7 +106,7 @@ The distinction matters. `null` is a value you *chose*. `undefined` is memory yo
 def UserId = i32
 def Matrix = [][]f32
 
-let id: UserId = 1   // same as i32 underneath
+let id: UserId = 1 // same as i32 underneath
 ```
 
 As a **shape contract** (a named set of field types):
@@ -223,7 +223,7 @@ def Shape =
 let s: Shape = .Circle { radius: 5.0 }
 
 match s {
-    .Circle(c) => { c.radius * c.radius }   // capture the data
+    .Circle(c) => { c.radius * c.radius } // capture the data
     .Rect(r)   => { r.width * r.height }
 }
 ```
@@ -233,7 +233,7 @@ match s {
 ```mine
 match s {
     .Circle(c) => { c.radius }
-    else       => { 0.0 }       // covers .Rect and anything added later
+    else       => { 0.0 } // covers .Rect and anything added later
 }
 ```
 

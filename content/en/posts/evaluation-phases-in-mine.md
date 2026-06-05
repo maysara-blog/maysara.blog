@@ -39,10 +39,10 @@ A `comptime` parameter tells the compiler: "this value must be known at compile 
 fn allocate(comptime size: i32) {..}
 
 comptime let n = 64
-allocate(n)         // OK (n is comptime-known)
+allocate(n) // OK (n is comptime-known)
 
 let m = readInput()
-allocate(m)         // CompilerError (m is not comptime-known)
+allocate(m) // CompilerError (m is not comptime-known)
 ```
 
 ## But... numbers are already comptime :P

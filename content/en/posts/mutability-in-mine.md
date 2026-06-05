@@ -18,11 +18,11 @@ When you read a binding in code, you shouldn't have to wonder "will this change 
 In Mine, you declare bindings with `let` (immutable) or `mut` (mutable):
 
 ```mine
-let x = 42      // immutable (cannot be reassigned)
-mut y = 42      // mutable (can be reassigned)
+let x = 42 // immutable (cannot be reassigned)
+mut y = 42 // mutable (can be reassigned)
 
-x = 10          // CompilerError (`x` is immutable)
-y = 10          // OK
+x = 10     // CompilerError (`x` is immutable)
+y = 10     // OK
 ```
 
 Simple. If you didn't write `mut`, it won't change. The compiler enforces it, not convention.
@@ -61,7 +61,7 @@ Parameters are immutable by default too. If a function wants to modify a local c
 ```mine
 // mutates a local copy (caller's value unchanged)
 fn double(mut n: i32) {
-    n = n * 2   // OK (local copy)
+    n = n * 2       // OK (local copy)
 }
 
 // mutates the caller's value

@@ -1,6 +1,6 @@
 ---
 title: "Evaluation Phases in Mine"
-date: 2026-05-27
+date: 2026-05-22
 draft: false
 description: "Evaluation Phases in Mine Language"
 ---
@@ -105,9 +105,3 @@ That's the kind of explicitness I want everywhere in Mine :)
 → [Visibility in Mine](./visibility-in-mine)
 
 → [How Types Work in Mine](./how-types-work-in-mine)
-
-→ [Error Handling in Mine](./error-handling-in-mine)
-
----
-
-<br>

@@ -1,6 +1,6 @@
 ---
 title: "Visibility in Mine"
-date: 2026-05-26
+date: 2026-05-21
 draft: false
 description: "Visibility in Mine Language"
 ---
@@ -65,7 +65,7 @@ One rule I'm firm about: **static fields must be immutable**. A mutable static f
 
 ```mine
 class Counter {
-    pub static mut count = 0 as i32  // CompilerError (static fields must be immutable)
+    pub static mut count = 0 as i32 // CompilerError (static fields must be immutable)
 }
 ```
 
@@ -88,9 +88,3 @@ Private by default means your public API is always *intentional*. Every `pub` is
 → [Evaluation Phases in Mine](./evaluation-phases-in-mine)
 
 → [How Types Work in Mine](./how-types-work-in-mine)
-
-→ [Error Handling in Mine](./error-handling-in-mine)
-
----
-
-<br>

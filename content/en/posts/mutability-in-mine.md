@@ -1,6 +1,6 @@
 ---
 title: "Mutability in Mine"
-date: 2026-05-25
+date: 2026-05-20
 draft: false
 description: "Mutability in Mine Language"
 ---
@@ -109,9 +109,3 @@ That's the kind of explicitness I wanted Mine to have from day one :)
 → [Evaluation Phases in Mine](./evaluation-phases-in-mine)
 
 → [How Types Work in Mine](./how-types-work-in-mine)
-
-→ [Error Handling in Mine](./error-handling-in-mine)
-
----
-
-<br>

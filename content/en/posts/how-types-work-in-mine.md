@@ -1,6 +1,6 @@
 ---
 title: "How Types Work in Mine"
-date: 2026-05-28
+date: 2026-05-23
 draft: false
 description: "How Types Work in Mine Language"
 ---
@@ -276,6 +276,4 @@ Explicit types feel like work at first. Then you stop hitting weird bugs at 2am 
 
 → [Error Handling in Mine](./error-handling-in-mine)
 
----
-
-<br>
+→ [Control Flow in Mine](./control-flow-in-mine)

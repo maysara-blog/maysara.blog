@@ -1,6 +1,6 @@
 ---
 title: "Error Handling in Mine"
-date: 2026-05-29
+date: 2026-05-24
 draft: false
 description: "Error Handling in Mine"
 ---
@@ -16,21 +16,28 @@ Mine doesn't have exceptions. Errors are values, they're explicit, and the compi
 Use `err` to define a named set of error variants:
 
 ```mine
-err MathErrors = .DivisionByZero | .Overflow | .Underflow
-err FileErrors = .NotFound | .PermissionDenied | .Corrupted
+err MathErrors = [DivisionByZero, Overflow, Underflow]
+err FileErrors = [NotFound, PermissionDenied, Corrupted]
 ```
 
-Consistent with `def` (same `|` syntax, same `.Variant` style). No special `error` keyword, no global error registry like Zig's `anyerror`.
+No special `error` keyword, no global error registry like Zig's `anyerror`.
 
 ---
 
 ## Functions that can fail
 
-Add `ErrorSet!ReturnType` to the signature:
+Add `ErrorSet!ReturnType` to the signature. You can use a named set or define the errors inline:
 
 ```mine
+// named error set
 fn divide(a: f32, b: f32) MathErrors!f32 {
-    if b == 0.0 { fail .DivisionByZero }
+    if b == 0.0 { fail DivisionByZero }
+    return a / b
+}
+
+// inline error set (no need to define separately)
+fn divide(a: f32, b: f32) [DivisionByZero, Overflow]!f32 {
+    if b == 0.0 { fail DivisionByZero }
     return a / b
 }
 ```
@@ -40,8 +47,8 @@ fn divide(a: f32, b: f32) MathErrors!f32 {
 A function that can fail but returns nothing:
 
 ```mine
-fn save(data: []u8) FileErrors!void {
-    if !hasPermission() { fail .PermissionDenied }
+fn save(data: []u8) [PermissionDenied, DiskFull]!void {
+    if !hasPermission() { fail PermissionDenied }
     // ...
 }
 ```
@@ -77,7 +84,7 @@ match divide(a, b) {
 
 `ok(v)` captures the success value. Error variants use the same `.Variant` syntax as enums (flat, no nesting, no `Ok`/`Err` wrapper types like Rust).
 
-`match` is exhaustive (if you don't cover all variants the compiler tells you. Use `else` as a fallback):
+`match` is exhaustive (if you don't cover all variants the compiler tells you). Use `else` as a fallback:
 
 ```mine
 match divide(a, b) {
@@ -90,24 +97,20 @@ match divide(a, b) {
 
 ## Combining error sets
 
-Error sets can be merged with `|` (same syntax as defining them):
+Named sets can be merged inline in a signature or into a new named set:
 
 ```mine
-err MathErrors = .DivisionByZero | .Overflow
-err FileErrors = .NotFound       | .PermissionDenied
+err MathErrors = [DivisionByZero, Overflow]
+err FileErrors = [NotFound, PermissionDenied]
 
-// merge into a new set
-err AppErrors = MathErrors      | FileErrors | .Unknown
-//            = .DivisionByZero | .Overflow  | .NotFound | .PermissionDenied | .Unknown
-```
+// merge into a new named set
+err AppErrors = [MathErrors, FileErrors, Unknown]
 
-Use the merged set in function signatures:
+// or merge inline in a signature
+fn process() [MathErrors, FileErrors, Unknown]!void {..}
 
-```mine
+// or use the named merged set
 fn process() AppErrors!void {..}
-
-// or inline without defining a name
-fn process() MathErrors|FileErrors!void {..}
 ```
 
 ---
@@ -118,27 +121,26 @@ Zig's error handling is good (explicit, no exceptions, compiler-enforced). But i
 
 Mine keeps what's good (explicit errors, `try` propagation, exhaustive handling) and cleans up the rest:
 
-|                  | Zig                        | Mine                     |
-| ---------------- | -------------------------- | ------------------------ |
-| Define errors    | `const E = error { A, B }` | `err E = .A \| .B`       |
-| Return error     | `return error.A`           | `fail .A`                |
-| Propagate        | `try x`                    | `try x`                  |
-| Handle           | `catch \|e\| switch`       | `catch e { }` or `match` |
-| Success in match | --                         | `ok(v)`                  |
-| Global catch-all | `anyerror`                 | ✗ not allowed            |
+|                 | Zig                        | Mine                                        |
+| --------------- | -------------------------- | ------------------------------------------- |
+| Define errors   | `const E = error{A, B}`    | `err E = [A, B]`                            |
+| Inline errors   | `{A, B}!T`                 | `[A, B]!T`                                  |
+| Return error    | `return error.A`           | `fail A`                                    |
+| Propagate       | `try x`                    | `try x`                                     |
+| Handle          | `catch \|e\| {}`           | `catch e {}` or `match`                     |
+| Inline handling | `if (x) \|v\| else \|e\|`  | `match x { ok(v) => {}, .Error => {}, .. }` |
+| Merge sets      | `const M = Set1 \|\| Set2` | `err M = [Set1, Set2]`                      |
+| Inline merge    | ✗ not supported            | `[Set1, Set2, Error]!T`                     |
+| Catch-all       | `anyerror`                 | ✗ not allowed                               |
+
+
 
 No surprises, no invisible control flow, no 2am stack traces :)
 
 ---
 
-→ [Mutability in Mine](./mutability-in-mine)
+→ [Control Flow in Mine](./control-flow-in-mine)
 
-→ [Visibility in Mine](./visibility-in-mine)
+→ [Exit Statements in Mine](./exit-stmts-in-mine)
 
-→ [Evaluation Phases in Mine](./evaluation-phases-in-mine)
-
-→ [How Types Work in Mine](./how-types-work-in-mine)
-
----
-
-<br>
+→ [Deferred Statements in Mine](./deferred-stmts-in-mine)

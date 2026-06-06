@@ -47,9 +47,9 @@ theme = "myblog-theme"
     url = '/history/'
     weight = 30
   [[Languages.en-us.menu.main]]
-    pageRef="sponsor"
-    name = 'Sponsor'
-    url = '/sponsor/'
+    pageRef=""
+    name = 'Support my work :)'
+    url = '/support-my-work/'
     weight = 40
 
 [Languages.en-us.params]

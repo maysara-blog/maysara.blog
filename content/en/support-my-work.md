@@ -13,7 +13,7 @@ draft: false
 
     > [Mine](https://github.com/sponsors/minelang) (not yet).
 
-- ### 💳 PayPal
+- ### 💳 PayPal 
 
     > [Personal/Channel](https://www.paypal.me/MaysaraElshewehy)
 

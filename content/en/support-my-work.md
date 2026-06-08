@@ -1,19 +1,21 @@
 ---
-title: "Support My Work"
+title: "❤️"
 draft: false
 ---
 
-> Currently, I'm dedicating myself to working on [`Mine`](https://minelang.org) programming language and [`Code Guild`](https://www.youtube.com/@code-guild) channel.
+> Currently, I'm dedicating myself to working on [Mine](https://minelang.org) programming language and [Code Guild](https://www.youtube.com/@code-guild) channel.
 >
-> If you'd like to support this work, you can sponsor me through:
+> If you'd like to support this work, you can through:
 
 - ### 🌟 GitHub Sponsors (Preferred)
 
-    > [Support me on GitHub Sponsors](https://github.com/sponsors/maysara-elshewehy)
+    > [Personal](https://github.com/sponsors/maysara-elshewehy)
+
+    > [Mine](https://github.com/sponsors/minelang) (not yet).
 
 - ### 💳 PayPal
 
-    > [Support me on PayPal](https://www.paypal.me/MaysaraElshewehy)
+    > [Personal/Channel](https://www.paypal.me/MaysaraElshewehy)
 
 ---
 

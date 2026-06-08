@@ -48,7 +48,7 @@ theme = "myblog-theme"
     weight = 30
   [[Languages.en-us.menu.main]]
     pageRef=""
-    name = 'Support my work :)'
+    name = ':)'
     url = '/support-my-work/'
     weight = 40
 
